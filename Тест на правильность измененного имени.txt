@@ -1,0 +1,9 @@
+pm.test("Правильность измененного имени питомца", function () {
+    var jsonData = pm.response.json();
+    if(pm.variables.get("name")!= ""){
+        pm.expect(jsonData.name).to.eql(pm.variables.get("name").toString());
+    }
+    else{
+        pm.expect(jsonData.name).to.eql(pm.collectionVariables.get("lastName").toString());
+    }
+});
